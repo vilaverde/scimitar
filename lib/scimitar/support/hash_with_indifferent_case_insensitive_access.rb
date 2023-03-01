@@ -24,7 +24,7 @@ class Hash
   def self.deep_indifferent_case_insensitive_access(object)
     if object.is_a?(Hash)
       new_hash = Scimitar::Support::HashWithIndifferentCaseInsensitiveAccess.new(object)
-      new_hash.each do | key, value |
+      new_hash.dup.each do | key, value |
         new_hash[key] = deep_indifferent_case_insensitive_access(value)
       end
       new_hash
